@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>bak3rika - Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Your Cart</h1>
+    <p>Review your delicious order 🛒</p>
+  </header>
+
+  <main>
+    <div id="cart-items">
+      <!-- Items will appear here -->
+    </div>
+    <div id="cart-total" style="text-align: center; margin-top: 1.5rem; font-size: 1.2rem; font-weight: bold;">
+      Total: RM<span id="total-amount">0</span>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <button id="checkout-btn">Checkout</button>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html" style="color: #ff6b6b; text-decoration: none;">← Back to Menu</a></p>
+  </footer>
+
+  <script>
+    // Load cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartItemsDiv = document.getElementById('cart-items');
+    const totalAmountSpan = document.getElementById('total-amount');
+
+    if (cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p style="text-align: center; margin-top: 2rem;">Your cart is empty!</p>';
+    } else {
+      let total = 0;
+      let html = '';
+      cart.forEach((item, index) => {
+  const itemTotal = item.price * (item.quantity || 1);
+  total += itemTotal;
+  const qtyText = item.quantity ? ` (x${item.quantity})` : '';
+  html += `
+    <div style="padding: 0.8rem; border-bottom: 1px solid #eee;">
+      <strong>${item.name}${qtyText}</strong> — RM${itemTotal.toFixed(2)}
+    </div>
+  `;
+});
+      cartItemsDiv.innerHTML = html;
+      totalAmountSpan.textContent = total.toFixed(2);
+    }
+
+    // Checkout button
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      alert('Thank you for your order! 🎉\n(In a real app, this would connect to payment.)');
+      localStorage.removeItem('cart');
+      cart = [];
+      location.reload();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #fff9f5;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem;
+  background: #ff6b6b;
+  color: white;
+}
+
+header h1 {
+  font-size: 2.2rem;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.food-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 280px;
+  text-align: center;
+}
+
+.food-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.price {
+  font-weight: bold;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.add-to-cart {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.add-to-cart:hover {
+  background: #e55a5a;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f1f1f1;
+  margin-top: 2rem;
+}
+
+.cart-link {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.cart-link a {
+  background: #4ecdc4;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cart-link a:hover {
+  background: #3da99a;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.quantity-control label {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.quantity {
+  width: 60px;
+  padding: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}

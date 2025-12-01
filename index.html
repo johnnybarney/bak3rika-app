@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>bak3rika - Order Homemade Delights</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>bak3rika</h1>
+    <p>Homemade with love 🧁</p>
+  </header>
+
+  <main>
+    <div class="menu">
+      <!-- Beef Lasagna -->
+      <div class="food-item">
+        <img src="https://picsum.photos/300/200?random=1" alt="Beef Lasagna" />
+        <h3>Beef Lasagna</h3>
+        <p>Rich, cheesy, and hearty</p>
+        <p class="price">RM22</p>
+        <div class="quantity-control">
+          <label>
+            Qty:
+            <input type="number" min="1" value="1" class="quantity" data-item="Beef Lasagna" />
+          </label>
+          <button class="add-to-cart" data-name="Beef Lasagna" data-price="22">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Moist Chocolate Cake -->
+      <div class="food-item">
+        <img src="https://picsum.photos/300/200?random=2" alt="Moist Chocolate Cake" />
+        <h3>Moist Chocolate Cake</h3>
+        <p>Decadently soft</p>
+        <p class="price">RM18</p>
+        <div class="quantity-control">
+          <label>
+            Qty:
+            <input type="number" min="1" value="1" class="quantity" data-item="Moist Chocolate Cake" />
+          </label>
+          <button class="add-to-cart" data-name="Moist Chocolate Cake" data-price="18">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Mac & Cheese -->
+      <div class="food-item">
+        <img src="https://picsum.photos/300/200?random=3" alt="Mac & Cheese" />
+        <h3>Mac & Cheese</h3>
+        <p>Creamy and comforting</p>
+        <p class="price">RM20</p>
+        <div class="quantity-control">
+          <label>
+            Qty:
+            <input type="number" min="1" value="1" class="quantity" data-item="Mac & Cheese" />
+          </label>
+          <button class="add-to-cart" data-name="Mac & Cheese" data-price="20">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Chicken Pie -->
+      <div class="food-item">
+        <img src="https://picsum.photos/300/200?random=4" alt="Chicken Pie" />
+        <h3>Chicken Pie</h3>
+        <p>Golden crust, tender filling</p>
+        <p class="price">RM16</p>
+        <div class="quantity-control">
+          <label>
+            Qty:
+            <input type="number" min="1" value="1" class="quantity" data-item="Chicken Pie" />
+          </label>
+          <button class="add-to-cart" data-name="Chicken Pie" data-price="16">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Cart Button -->
+    <div class="cart-link">
+      <a href="cart.html">🛒 View Cart</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 bak3rika. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
