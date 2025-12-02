@@ -12,9 +12,12 @@ body {
 
 header {
   text-align: center;
-  padding: 1.5rem;
-  background: #ff6b6b;
-  color: white;
+  padding: 1.8rem 1rem;
+  background: linear-gradient(135deg, #fad0c4, #ffd1ff);
+  color: #5a3a3a;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  margin-bottom: 2rem;
 }
 
 header h1 {
@@ -30,12 +33,17 @@ header h1 {
 }
 
 .food-item {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1rem;
+  background: #fef9f6;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  padding: 1.2rem;
   width: 280px;
   text-align: center;
+  transition: transform 0.2s;
+}
+
+.food-item:hover {
+  transform: translateY(-4px);
 }
 
 .food-item img {
@@ -53,17 +61,19 @@ header h1 {
 }
 
 .add-to-cart {
-  background: #ff6b6b;
+  background: #ff8db8;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
   cursor: pointer;
-  margin-top: 0.5rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  transition: background 0.2s;
 }
 
 .add-to-cart:hover {
-  background: #e55a5a;
+  background: #ff7aa8;
 }
 
 footer {
@@ -79,16 +89,19 @@ footer {
 }
 
 .cart-link a {
-  background: #4ecdc4;
+  background: #ff8db8;
   color: white;
-  padding: 0.6rem 1.5rem;
-  border-radius: 20px;
+  padding: 0.7rem 1.8rem;
+  border-radius: 14px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(255, 141, 184, 0.3);
 }
 
 .cart-link a:hover {
-  background: #3da99a;
+  background: #ff7aa8;
+  transform: translateY(-2px);
 }
 
 .quantity-control {

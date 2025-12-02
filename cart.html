@@ -7,20 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <h1>Your Cart</h1>
     <p>Review your delicious order 🛒</p>
   </header>
 
   <main>
-    <div id="cart-items">
+    <div id="cart-items" style="padding: 1rem;">
       <!-- Items will appear here -->
     </div>
-    <div id="cart-total" style="text-align: center; margin-top: 1.5rem; font-size: 1.2rem; font-weight: bold;">
-      Total: RM<span id="total-amount">0</span>
-    </div>
-    <div style="text-align: center; margin-top: 1.5rem;">
-      <button id="checkout-btn">Checkout</button>
+
+    <div style="text-align: center; padding: 1.5rem 1rem; background: #fff; border-top: 2px dashed #eee; margin-top: 1rem;">
+      <div style="font-size: 1.4rem; font-weight: bold; color: #333;">
+        Total: RM<span id="total-amount">0.00</span>
+      </div>
+      <button id="checkout-btn" style="
+        width: 90%;
+        max-width: 300px;
+        padding: 0.8rem;
+        margin-top: 1rem;
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      ">CHECKOUT</button>
     </div>
   </main>
 
@@ -36,22 +51,77 @@
     const totalAmountSpan = document.getElementById('total-amount');
 
     if (cart.length === 0) {
-      cartItemsDiv.innerHTML = '<p style="text-align: center; margin-top: 2rem;">Your cart is empty!</p>';
+      cartItemsDiv.innerHTML = '<p style="text-align: center; padding: 2rem; color: #888;">Your cart is empty!</p>';
     } else {
       let total = 0;
       let html = '';
       cart.forEach((item, index) => {
-  const itemTotal = item.price * (item.quantity || 1);
-  total += itemTotal;
-  const qtyText = item.quantity ? ` (x${item.quantity})` : '';
-  html += `
-    <div style="padding: 0.8rem; border-bottom: 1px solid #eee;">
-      <strong>${item.name}${qtyText}</strong> — RM${itemTotal.toFixed(2)}
-    </div>
-  `;
-});
+        const itemTotal = item.price * (item.quantity || 1);
+        total += itemTotal;
+        const qtyText = item.quantity ? `${item.quantity}` : '1';
+
+        html += `
+          <div style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            gap: 1rem;
+          ">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <img src="https://picsum.photos/60/60?random=${index + 1}" alt="${item.name}" style="border-radius: 8px; width: 60px; height: 60px; object-fit: cover;" />
+              <div>
+                <strong style="display: block; font-size: 1rem; color: #333;">${item.name}</strong>
+                <span style="font-size: 0.9rem; color: #777;">RM${item.price.toFixed(2)}</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <button class="qty-btn" data-index="${index}" data-action="decrease" style="
+                background: #f0f0f0;
+                border: 1px solid #ddd;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                font-weight: bold;
+                cursor: pointer;
+              ">−</button>
+              <span style="font-weight: bold; min-width: 20px; text-align: center;">${qtyText}</span>
+              <button class="qty-btn" data-index="${index}" data-action="increase" style="
+                background: #f0f0f0;
+                border: 1px solid #ddd;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                font-weight: bold;
+                cursor: pointer;
+              ">+</button>
+            </div>
+          </div>
+        `;
+      });
       cartItemsDiv.innerHTML = html;
       totalAmountSpan.textContent = total.toFixed(2);
+
+      // Add event listeners for quantity buttons
+      document.querySelectorAll('.qty-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const index = parseInt(button.dataset.index);
+          const action = button.dataset.action;
+
+          if (action === 'increase') {
+            cart[index].quantity = (cart[index].quantity || 1) + 1;
+          } else if (action === 'decrease' && (cart[index].quantity || 1) > 1) {
+            cart[index].quantity = (cart[index].quantity || 1) - 1;
+          }
+
+          localStorage.setItem('cart', JSON.stringify(cart));
+          location.reload(); // Simple refresh to update UI
+        });
+      });
     }
 
     // Checkout button
@@ -62,5 +132,6 @@
       location.reload();
     });
   </script>
+
 </body>
 </html>
